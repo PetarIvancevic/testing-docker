@@ -1,0 +1,8 @@
+{
+  "username": "happie_production",
+  "password": "password123",
+  "database": "happie_production",
+  "host": "172.17.0.2",
+  "dialect": "postgres",
+  "logging": false
+}

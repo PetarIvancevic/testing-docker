@@ -1,0 +1,28 @@
+web:
+  build: ./web
+  container_name: web
+  command: npm start
+  links:
+    - api
+  ports:
+    - '3001:3001'
+  volumes:
+    - ./web/:/app/src/
+postgres:
+  image: postgres:9.4
+  ports:
+    - "5432"
+  environment:
+    POSTGRES_USER: happie_development
+    POSTGRES_PASSWORD: password123
+    POSTGRES_DB: happie_development
+api:
+  build: ./api
+  container_name: api
+  command: npm start
+  ports:
+    - '3000:3000'
+  links:
+    - postgres
+  volumes:
+    - ./api/:/app/src/
