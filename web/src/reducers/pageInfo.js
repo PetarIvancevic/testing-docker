@@ -11,7 +11,6 @@ const initialState = getInitialState({
 });
 
 export default (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case PAGE_INFO_GET_ONE_SUCCESS:
       return mergeDeep(state, {

@@ -6,7 +6,6 @@ import store from './store.js';
 var Promise = require('es6-promise').Promise;
 
 function checkStatus(response) {
-  console.log(response);
   if (!response.error) return response;
   let error = new Error(response.message);
 

@@ -1,30 +1,18 @@
 'use strict';
 
 var webpack = require('webpack');
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
 
 var config = {
-  context: path.resolve(__dirname, '.'),
-  entry: {
-    main: [
-      'webpack-hot-middleware/client',
-      './src/main.jsx'
-    ]
-  },
-  devtool: 'inline-source-map',
+  entry: './src/main.jsx',
   output: {
-    path: path.resolve('dist'),
+    path: path.join(__dirname + '/dist'),
     filename: 'app.js',
     publicPath: '/'
   },
-  externals: {
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
-  },
   module: {
     loaders: [
-
       {test: /\.scss$/, loaders: ["style", "css", "sass"]},
 
       {test: /\.(jpe?g|png|gif)$/i, loaders: ['url?limit=8192', 'img']},
@@ -32,17 +20,14 @@ var config = {
       {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel']}
     ]
   },
-  progress: true,
-  reslove: {
-    modulesDirectories: [
-      'node_modules'
-    ],
+  resolve: {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new UglifyJsPlugin({minimize: true}),
     new webpack.DefinePlugin({
-      '__API_HOST__': JSON.stringify('http://localhost:3000/')
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      '__API_HOST__': JSON.stringify(process.env.API_HOST)
     })
   ]
 };

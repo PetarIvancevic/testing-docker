@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev-start": "nodemon ./bin/www",
     "start": "node ./bin/www"
   },
   "author": "",
@@ -17,5 +18,8 @@
     "pg": "^6.1.0",
     "sequelize": "^3.24.1",
     "sequelize-cli": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
   }
 }

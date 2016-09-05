@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getPageInfo} from '../actions/pageInfo';
 
+require('../../styles/main.scss');
+
 @connect(state => ({
   pageInfo: state.pageInfo.getIn(['pageDetails'])
 }))
